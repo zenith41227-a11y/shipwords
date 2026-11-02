@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-label="Stand-in drawing of a night cruise deck">
+  <title>Stand-in cruise deck</title>
+  <rect width="720" height="420" fill="#07111f"/>
+  <path d="M0 250c80-40 140-40 220 0s140 40 220 0 140-40 220 0 60 20 60 20v150H0Z" fill="#0c1c33"/>
+  <path d="M40 300h640" stroke="#e7c56a" stroke-width="3" opacity="0.85"/>
+  <path d="M70 300v-70M180 300v-70M360 300v-90M540 300v-70M650 300v-70" stroke="#f4efe4" stroke-width="2" opacity="0.35"/>
+  <circle cx="560" cy="78" r="28" fill="#e7c56a" opacity="0.9"/>
+  <text x="36" y="48" fill="#e7c56a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="18">Stand-in deck - licensed clip not included</text>
+</svg>

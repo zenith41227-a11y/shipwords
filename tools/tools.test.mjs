@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { test } from 'node:test';
 import { checkCrawl, inspectHtml } from './check-crawl.mjs';
-import { isScanned, scanText as scanPublic } from './check-public.mjs';
+import { isScanned, publicEmailHosts, scanText as scanPublic } from './check-public.mjs';
 import { checkSite, devVars, stringLiterals } from './check-site.mjs';
 import { isWorktree, portFor, sitePort } from './dev-port.mjs';
 import { readSiteConfig, readStatus, setVar, TOOLS_ROOT } from './lib.mjs';
@@ -348,4 +348,22 @@ test('check-public: flags real-looking emails, IDs and live keys, accepts placeh
   assert.equal(isScanned('sites/x/migrations/meta/0_snapshot.json'), false);
   assert.equal(isScanned('pnpm-lock.yaml'), false);
   assert.equal(isScanned('sites/x/wrangler.jsonc'), true);
+});
+
+test('check-public: contact emails on a site url host are public, other inboxes are not', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'shipwords-'));
+  const dir = path.join(root, 'sites', 'demo');
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(
+    path.join(dir, 'site.config.ts'),
+    "export default { id: 'demo', name: 'Demo', url: 'https://24kmagicai.com' }\n",
+  );
+  const hosts = publicEmailHosts(root);
+  assert.ok(hosts.has('24kmagicai.com'));
+  assert.deepEqual(
+    scanPublic('sites/demo/wrangler.jsonc', 'noreply@24kmagicai.com\nsupport@24kmagicai.com', hosts),
+    [],
+  );
+  assert.match(scanPublic('sites/demo/notes.md', 'me@qq.com', hosts)[0], /email/);
+  fs.rmSync(root, { recursive: true, force: true });
 });

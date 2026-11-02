@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <title>24K Magic AI</title>
+  <rect width="32" height="32" rx="8" fill="#07111f"/>
+  <path d="M4 22c3-3 6-3 9 0s6 3 9 0 6-3 6 0" fill="none" stroke="#e7c56a" stroke-width="1.6"/>
+  <circle cx="16" cy="12" r="3.2" fill="#e7c56a"/>
+</svg>
