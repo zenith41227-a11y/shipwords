@@ -1,6 +1,9 @@
 import { defineSite } from '@shipwords/core/site';
 
 // All config for this site. Prices are in the smallest currency unit (cents). Do not change id after launch.
+// One dance video is 10 credits, same price for 1 to 4 people. Pack prices are a starting point copied from the
+// Tiny Desk cost shape (about $3 of Kling plus repair headroom). Re-price after a real Yir run of the licensed clip.
+// Sign in, then buy, then generate. No guest trial and no sign-up bonus: a video is too expensive to give away.
 export default defineSite({
   id: 'ai24kmagic',
   name: '24K Magic AI',
@@ -9,32 +12,32 @@ export default defineSite({
   defaultLocale: 'en',
   products: [
     {
-      id: 'pack_200',
+      id: 'video_1',
       kind: 'credits',
-      name: '200 credits',
-      price: { amount: 499, currency: 'usd' },
-      credits: 200,
+      name: '1 video',
+      price: { amount: 998, currency: 'usd' },
+      credits: 10,
       expiresDays: null,
     },
     {
-      id: 'pack_1000',
+      id: 'video_3',
       kind: 'credits',
-      name: '1,000 credits',
-      price: { amount: 1999, currency: 'usd' },
-      credits: 1000,
+      name: '3 videos',
+      price: { amount: 2499, currency: 'usd' },
+      credits: 30,
       expiresDays: null,
     },
     {
-      id: 'pro_month',
-      kind: 'subscription',
-      name: 'Pro monthly',
-      price: { amount: 999, currency: 'usd' },
-      interval: 'month',
-      creditsPerPeriod: 600,
+      id: 'video_10',
+      kind: 'credits',
+      name: '10 videos',
+      price: { amount: 5999, currency: 'usd' },
+      credits: 100,
+      expiresDays: null,
     },
   ],
-  signup: { bonusCredits: 20, bonusExpiresDays: 30, bonusPerIpDaily: 3, bonusSiteDaily: 100 },
-  guest: { dailyPerDevice: 2, dailyPerIp: 4, dailySiteBudget: 200, minRecaptchaScore: 0.5 },
+  signup: { bonusCredits: 0, bonusExpiresDays: null, bonusPerIpDaily: 0, bonusSiteDaily: 0 },
+  guest: { dailyPerDevice: 0, dailyPerIp: 0, dailySiteBudget: 0, minRecaptchaScore: 0.5 },
   billing: { provider: 'stripe', automaticTax: false },
   analytics: {},
 });

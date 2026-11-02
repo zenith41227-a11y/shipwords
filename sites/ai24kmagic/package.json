@@ -16,6 +16,7 @@
     "deploy:preview": "vite build && node ../../tools/check-site.mjs . && wrangler versions upload"
   },
   "dependencies": {
+    "@cloudflare/containers": "0.3.7",
     "@shipwords/core": "workspace:*",
     "@shipwords/jobs": "workspace:*",
     "@tanstack/react-router": "1.170.46",

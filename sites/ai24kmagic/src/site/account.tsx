@@ -12,7 +12,8 @@ import site from '../../site.config';
 
 const OPEN_EVENT = 'site:account';
 /** With credit packs only there is no subscription to manage, so the Customer Portal link is hidden. */
-const SELLS_SUBSCRIPTIONS = site.products.some((p) => p.kind === 'subscription');
+// `as string` keeps this check valid while the catalog is packs only (kind is the literal "credits").
+const SELLS_SUBSCRIPTIONS = site.products.some((product) => (product.kind as string) === 'subscription');
 
 export function openAccount() {
   window.dispatchEvent(new Event(OPEN_EVENT));

@@ -19,6 +19,12 @@ export const Route = createRootRoute({
   head: () => ({
     meta: [{ charSet: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
     links: [
+      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Outfit:wght@400;500;600&family=Syne:wght@700;800&display=swap',
+      },
       { rel: 'stylesheet', href: appCss },
       { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
     ],
@@ -91,6 +97,7 @@ function Layout() {
           {site.name}
         </Link>
         <nav>
+          <Link to="/how-to-make-a-24k-magic-ai-dance-video">{m.common_nav_how()}</Link>
           <PricingLink source="nav">{m.common_nav_pricing()}</PricingLink>
           {import.meta.env.DEV && <LocaleToggle />}
           {user ? (
@@ -120,6 +127,8 @@ function Layout() {
       <footer className="site-footer">
         <span>{m.common_footer_notice({ year: new Date().getFullYear(), name: site.name })}</span>
         <nav>
+          <Link to="/how-to-make-a-24k-magic-ai-dance-video">{m.common_nav_how()}</Link>
+          <Link to="/cruise-deck-dance-template">{m.common_guide_template_title()}</Link>
           <Link to="/privacy">{m.common_footer_privacy()}</Link>
           <Link to="/terms">{m.common_footer_terms()}</Link>
           <Link to="/refunds">{m.common_footer_refunds()}</Link>

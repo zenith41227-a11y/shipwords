@@ -104,6 +104,9 @@ importers:
 
   sites/ai24kmagic:
     dependencies:
+      '@cloudflare/containers':
+        specifier: 0.3.7
+        version: 0.3.7
       '@shipwords/core':
         specifier: workspace:*
         version: link:../../packages/core

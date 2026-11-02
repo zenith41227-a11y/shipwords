@@ -27,5 +27,19 @@
       "binding": "GENERATION_WORKFLOW",
       "class_name": "GenerationWorkflow"
     }
-  ]
+  ],
+  // Effect compose container: ffmpeg image in packages/jobs/compose. Instance type is set in start() in server.ts.
+  "containers": [
+    {
+      "class_name": "ComposeContainer",
+      "scheduling_policy": "durable_object",
+      "images": { "compose": { "dockerfile": "../../packages/jobs/compose/Dockerfile" } }
+    }
+  ],
+  "durable_objects": {
+    "bindings": [{ "name": "COMPOSE", "class_name": "ComposeContainer" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["ComposeContainer"] }],
+  // Local dev neither builds nor runs the container (no Docker). With UPSTREAM_MOCK=1 the mock composer is used.
+  "dev": { "enable_containers": false }
 }

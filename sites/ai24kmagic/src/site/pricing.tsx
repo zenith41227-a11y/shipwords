@@ -110,7 +110,7 @@ export function Plans({
             >
               {pending === product.id
                 ? m.common_plan_redirecting()
-                : product.kind === 'subscription'
+                : (product.kind as string) === 'subscription'
                   ? m.common_plan_subscribe()
                   : m.common_plan_buy()}
             </button>
